@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.kapt)
 
 }
 
@@ -46,16 +47,20 @@ dependencies {
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging)
+
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.okhttp)
+
+    //Navigation Compose
+    implementation(libs.androidx.navigation.compose)
 
 //dagger hilt
     implementation(libs.dagger)
-    implementation(libs.androidx.navigation.compose)
-    implementation(platform(libs.androidx.compose.bom))
-
     ksp(libs.dagger.compiler)
     implementation(libs.dagger.android)
     ksp(libs.dagger.android.processor)
-
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
@@ -65,11 +70,15 @@ dependencies {
     implementation(libs.room)
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
-    implementation(libs.lifecycle.viewmodel)
     ksp(libs.room.compiler)
+
+
+    //ViewModel
+    implementation(libs.lifecycle.viewmodel)
+
+    //Glide
     implementation(libs.glide)
 
-    //
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -86,4 +95,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation(platform(libs.androidx.compose.bom))
+
 }
