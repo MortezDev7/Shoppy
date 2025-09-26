@@ -1,6 +1,11 @@
 package com.morteza.shoppy.module
 
-import com.morteza.shoppy.api.site.SliderApi
+import com.morteza.shoppy.api.customers.UserApi
+import com.morteza.shoppy.api.invoices.InvoiceApi
+import com.morteza.shoppy.api.invoices.TransactionApi
+import com.morteza.shoppy.api.products.ProductApi
+import com.morteza.shoppy.api.products.ProductCategoryApi
+import com.morteza.shoppy.api.slider.SliderApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,5 +44,35 @@ class ApiModule {
     @Singleton
     fun provideSliderApi() : SliderApi{
         return provideApi().create(SliderApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductApi() : ProductApi{
+        return provideApi().create(ProductApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductCategoryApi() : ProductCategoryApi{
+        return provideApi().create(ProductCategoryApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideInvoiceApi() : InvoiceApi{
+        return provideApi().create(InvoiceApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTransactionApi() : TransactionApi{
+        return provideApi().create(TransactionApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserApi() : UserApi{
+        return provideApi().create(UserApi::class.java)
     }
 }

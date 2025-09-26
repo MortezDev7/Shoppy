@@ -1,4 +1,4 @@
-package com.morteza.shoppy.model.site
+package com.morteza.shoppy.model.slider
 
 data class Sliders(
     var id : Long?,
