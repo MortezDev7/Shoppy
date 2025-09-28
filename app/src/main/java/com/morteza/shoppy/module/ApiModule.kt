@@ -6,6 +6,7 @@ import com.morteza.shoppy.api.invoices.TransactionApi
 import com.morteza.shoppy.api.products.ProductApi
 import com.morteza.shoppy.api.products.ProductCategoryApi
 import com.morteza.shoppy.api.slider.SliderApi
+import com.morteza.shoppy.config.UnsafeSSLConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,9 +29,10 @@ class ApiModule {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-        val client = OkHttpClient.Builder()
+        val client = UnsafeSSLConfig.unsafeOkHttpClientBuilder
             .addInterceptor(logging)
             .build()
+
 
         return Retrofit.Builder()
             .baseUrl("https://onlineshop.holosen.net/api/")
