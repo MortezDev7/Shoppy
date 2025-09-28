@@ -1,0 +1,44 @@
+# Application startup and lifecycle methods
+HSPLcom/morteza/shoppy/MainActivity;-><init>()V
+HSPLcom/morteza/shoppy/MainActivity;->onCreate(Landroid/os/Bundle;)V
+HSLcom/morteza/shoppy/MainActivity;->onStart()V
+HSLcom/morteza/shoppy/MainActivity;->onResume()V
+
+# Compose framework initialization
+HSPLandroidx/activity/compose/ComponentActivityKt;->setContent(Landroidx/activity/ComponentActivity;Lkotlin/jvm/functions/Function2;)V
+HSPLandroidx/compose/ui/platform/ComposeView;-><init>(Landroid/content/Context;)V
+
+# Dependency injection components
+HSPLdagger/hilt/android/internal/managers/ApplicationComponentManager;->generatedComponent()Ljava/lang/Object;
+HSPLcom/morteza/shoppy/di/DatabaseModule;->provideDatabase(Landroid/content/Context;)Lcom/morteza/shoppy/data/database/AppDatabase;
+HSPLcom/morteza/shoppy/di/NetworkModule;->provideRetrofit()Lcom/morteza/shoppy/data/remote/ApiService;
+
+# Repository layer initialization
+HPLcom/morteza/shoppy/data/repository/ProductRepository;-><init>(Lcom/morteza/shoppy/data/remote/ApiService;Lcom/morteza/shoppy/data/database/ProductDao;)V
+HPLcom/morteza/shoppy/data/repository/ProductRepository;->getProducts()Lkotlinx/coroutines/flow/Flow;
+
+# ViewModel creation and lifecycle
+HPLcom/morteza/shoppy/presentation/viewmodel/ProductViewModel;-><init>(Lcom/morteza/shoppy/data/repository/ProductRepository;)V
+HPLandroidx/lifecycle/ViewModelProvider;->get(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;
+
+# Navigation components
+HSPLandroidx/navigation/compose/NavHostKt;->NavHost(Landroidx/navigation/NavHostController;Ljava/lang/String;Landroidx/compose/ui/Modifier;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;II)V
+HPLandroidx/navigation/compose/NavHostController;->navigate(Ljava/lang/String;)V
+
+# Image loading with Coil
+PLio/coil3/compose/AsyncImageKt;->AsyncImage(Ljava/lang/Object;Ljava/lang/String;Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lio/coil3/request/ImageRequest$Builder;Landroidx/compose/runtime/Composer;II)V
+PLio/coil3/ImageLoader;->enqueue(Lio/coil3/request/ImageRequest;)Lio/coil3/request/Disposable;
+
+# Database operations
+HPLcom/morteza/shoppy/data/database/AppDatabase;->productDao()Lcom/morteza/shoppy/data/database/ProductDao;
+PLandroidx/room/RoomDatabase;->query(Landroidx/sqlite/db/SupportSQLiteQuery;)Landroid/database/Cursor;
+
+# Network operations
+PLcom/morteza/shoppy/data/remote/ApiService;->getProducts()Lretrofit2/Call;
+PLretrofit2/Retrofit;->create(Ljava/lang/Class;)Ljava/lang/Object;
+PLokhttp3/OkHttpClient;->newCall(Lokhttp3/Request;)Lokhttp3/Call;
+
+# UI screen components
+HPLcom/morteza/shoppy/presentation/screens/HomeScreenKt;->HomeScreen(Landroidx/navigation/NavController;Landroidx/compose/runtime/Composer;I)V
+HPLcom/morteza/shoppy/presentation/screens/ProductListScreenKt;->ProductListScreen(Landroidx/compose/runtime/Composer;I)V
+HPLcom/morteza/shoppy/presentation/components/ProductItemKt;->ProductItem(Lcom/morteza/shoppy/data/model/Product;Landroidx/compose/runtime/Composer;I)V

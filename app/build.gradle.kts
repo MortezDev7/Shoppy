@@ -1,3 +1,5 @@
+import io.netty.util.ReferenceCountUtil.release
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,7 +7,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.kapt)
-
+    alias(libs.plugins.baselineprofile)
 }
 
 android {
@@ -24,26 +26,55 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        create("benchmark") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
+
     buildFeatures {
         compose = true
+    }
+
+    experimentalProperties["android.experimental.self-instrumenting"] = true
+}
+
+baselineProfile {
+    variants {
+        release {
+            automaticGenerationDuringBuild = true
+        }
     }
 }
 
 dependencies {
+    // ProfileInstaller
+    implementation(libs.androidx.profileinstaller)
+
     //retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
@@ -56,7 +87,7 @@ dependencies {
     //Navigation Compose
     implementation(libs.androidx.navigation.compose)
 
-//dagger hilt
+    //dagger hilt
     implementation(libs.dagger)
     ksp(libs.dagger.compiler)
     implementation(libs.dagger.android)
@@ -66,19 +97,16 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
 
     //room
-
     implementation(libs.room)
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.compiler)
-
 
     //ViewModel
     implementation(libs.lifecycle.viewmodel)
 
     //Glide
     implementation(libs.glide)
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -88,6 +116,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -95,6 +124,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation(platform(libs.androidx.compose.bom))
-
 }
