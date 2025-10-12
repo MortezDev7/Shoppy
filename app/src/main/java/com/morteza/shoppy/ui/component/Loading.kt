@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 fun Loading(modifier: Modifier = Modifier) {
     Box(modifier.padding(10.dp)) {
         Card(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier,
             shape = RoundedCornerShape(20.dp),
             elevation = CardDefaults.cardElevation(0.dp)
         ) {

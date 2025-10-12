@@ -5,3 +5,4 @@ data class DataUiState<T>(
     val data : List<T>? = null,
     val error : String? = null
 )
+
