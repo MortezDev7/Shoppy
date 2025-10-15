@@ -13,7 +13,6 @@ open class BaseViewModel : ViewModel() {
         apiCall: suspend () -> ApiResponse<T>
     ) {
         state (DataUiState(isLoading = true))
-
         viewModelScope.launch {
             try {
                 val response = apiCall()

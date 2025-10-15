@@ -89,6 +89,7 @@ dependencies {
 
     //dagger hilt
     implementation(libs.dagger)
+    implementation(libs.androidx.benchmark.common)
     ksp(libs.dagger.compiler)
     implementation(libs.dagger.android)
     ksp(libs.dagger.android.processor)

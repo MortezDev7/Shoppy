@@ -23,6 +23,7 @@ coil = "3.3.0"
 profileinstaller = "1.4.1"
 macrobenchmark = "1.4.1"
 baselineProfilePluginVersion = "1.4.1"
+benchmarkCommon = "1.4.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -80,6 +81,7 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 
 #Glide
 glide = { group = "com.github.skydoves", name = "landscapist-glide",version.ref = "glide"}
+androidx-benchmark-common = { group = "androidx.benchmark", name = "benchmark-common", version.ref = "benchmarkCommon" }
 
 
 [plugins]
