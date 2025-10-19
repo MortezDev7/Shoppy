@@ -1,5 +1,6 @@
 package com.morteza.shoppy.ui.component
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -18,24 +19,27 @@ fun <T> DataUiStateHandler(
     errorContent: @Composable ((String) -> Unit)? = null,
     content: @Composable (List<T>) -> Unit
 ) {
-    when {
-        state.isLoading -> {
-            loadingContent?.invoke() ?: Loading(
-                modifier
-                    .fillMaxWidth()
-                    .height(loadingHeight)
-            )
-        }
+    Box(modifier = modifier) {
+        when {
+            state.isLoading -> {
+                loadingContent?.invoke() ?: Loading(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(loadingHeight)
+                )
+            }
 
-        state.error != null -> {
-            errorContent?.invoke(state.error) ?: ErrorBox(
-                state.error,
-                modifier = modifier.height(errorHeight)
-            )
-        }
+            state.error != null -> {
+                errorContent?.invoke(state.error) ?: ErrorBox(
+                    state.error,
+                    modifier = Modifier.height(errorHeight)
+                )
+            }
 
-        state.data != null -> {
-            content(state.data)
+            state.data != null -> {
+                content(state.data)
+            }
         }
     }
 }
+

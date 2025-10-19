@@ -3,6 +3,7 @@ package com.morteza.shoppy.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.morteza.shoppy.model.products.Product
 import com.morteza.shoppy.model.products.ProductCategory
 import com.morteza.shoppy.model.slider.Sliders
 import com.morteza.shoppy.repository.products.ProductCategoryRepository
@@ -25,20 +26,43 @@ class HomeViewModel @Inject constructor(
     var productCategory by mutableStateOf<DataUiState<ProductCategory>>(DataUiState())
         private set
 
+    var product by mutableStateOf<DataUiState<Product>>(DataUiState())
+        private set
+
+
     init {
         loadSliders()
         loadProductCategories()
+        loadAllProducts()
     }
 
     fun loadSliders() {
-        loadApi(state = {slider = it}) {
+        loadApi(state = { slider = it }) {
             silderRepository.getSliders()
         }
     }
 
-    fun loadProductCategories(){
-        loadApi(state = {productCategory = it}) {
+    fun loadProductCategories() {
+        loadApi(state = { productCategory = it }) {
             productCategoryRepository.getCategories()
+        }
+    }
+
+    fun loadAllProducts() {
+        loadApi(state = {product = it}){
+            productRepository.getProducts(0,6)
+        }
+    }
+
+    fun loadNewProducts() {
+        loadApi(state = { product = it }) {
+            productRepository.getNewProducts()
+        }
+    }
+
+    fun loadPopularProducts() {
+        loadApi(state = {product = it}){
+            productRepository.getPopularProducts()
         }
     }
 }
