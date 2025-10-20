@@ -72,6 +72,7 @@ baselineProfile {
 }
 
 dependencies {
+    implementation(libs.androidx.compose.material.icons.extended)
     // ProfileInstaller
     implementation(libs.androidx.profileinstaller)
 
