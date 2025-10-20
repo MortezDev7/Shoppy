@@ -24,7 +24,8 @@ fun AppCard(
     modifier: Modifier = Modifier,
     image: String? = null,
     title: String? = null,
-    subTitle: String? = null
+    subTitle: String? = null,
+    onClick: () -> Unit = {}
 ) {
     Card(
         modifier = modifier
@@ -34,7 +35,8 @@ fun AppCard(
                 clip = true
             ),
         shape = RoundedCornerShape(20.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+        elevation = CardDefaults.cardElevation(4.dp),
+        onClick = onClick
     ) {
         Box(Modifier.fillMaxSize()) {
             AppImage(image ?: "", title ?: "")

@@ -30,7 +30,7 @@ fun HomeScreen(
 
         SlidersRow(vm)
         Spacer(Modifier.height(10.dp))
-        ProductCategoriesRow(vm)
+        ProductCategoriesRow(vm,navController)
         Spacer(Modifier.height(10.dp))
         ProductsView(vm)
     }

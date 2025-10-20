@@ -9,10 +9,11 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.morteza.shoppy.viewmodel.HomeViewModel
 
 @Composable
-fun ProductCategoriesRow(vm: HomeViewModel) {
+fun ProductCategoriesRow(vm: HomeViewModel, navController: NavHostController) {
 
     DataUiStateHandler(
         state = vm.productCategory, modifier = Modifier
@@ -28,6 +29,9 @@ fun ProductCategoriesRow(vm: HomeViewModel) {
                             .height(200.dp),
                         image = item.image,
                         title = item.title,
+                        onClick = {
+                            navController.navigate("products/${item.id}/${item.title}")
+                        }
                     )
                 }
             }
