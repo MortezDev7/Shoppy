@@ -17,4 +17,29 @@ class ProductsViewModel @Inject constructor(
     var product by mutableStateOf<DataUiState<Product>>(DataUiState())
         private set
 
+    private var pageIndex = -1
+    private val pageSize = 4
+    private var endReached = false
+
+    fun loadProducts(categoryId: Long) {
+
+        if (product.isLoading || endReached) return
+
+        loadApi(state = {
+            if (!it.isLoading) {
+                if (it.data?.isEmpty() == true) {
+                    endReached = true
+                } else {
+                    pageIndex++
+                    val current = product.data?.toMutableList() ?: mutableListOf()
+                    current.addAll(product.data ?: listOf())
+                    product = DataUiState(data = current)
+                }
+            }
+            product = it
+        }) {
+            productRepository.getProductsByCategoryId(categoryId, pageIndex + 1, pageSize)
+        }
+
+    }
 }

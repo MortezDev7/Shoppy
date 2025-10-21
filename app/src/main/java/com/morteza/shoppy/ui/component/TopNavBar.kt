@@ -31,17 +31,23 @@ fun TopNavBar() {
         },
         actions = {
             AnimatedSlideIn(600) {
-                TextButton(onClick = {
+                TextButton(
+                    onClick = {
 
-                }) {
+                    },
+                    modifier = Modifier.width(50.dp)
+                ) {
                     Icon(imageVector = Icons.Filled.ShoppingCart, contentDescription = "Basket")
                 }
             }
 
             AnimatedSlideIn(900) {
-                TextButton(onClick = {
+                TextButton(
+                    onClick = {
 
-                }) {
+                    },
+                    modifier = Modifier.width(50.dp)
+                ) {
                     Icon(imageVector = Icons.Filled.Person, contentDescription = "Profile")
                 }
             }

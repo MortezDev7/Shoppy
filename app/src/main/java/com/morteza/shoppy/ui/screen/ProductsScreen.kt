@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,6 +32,10 @@ fun ProductsScreen(
     navController: NavHostController,
     vm: ProductsViewModel = hiltViewModel()
 ) {
+    LaunchedEffect(catId) {
+        vm.loadProducts(catId)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -42,15 +48,14 @@ fun ProductsScreen(
 
         DataUiStateHandler(
             state = vm.product, modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
+                .fillMaxSize()
         ) { data ->
-            LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            LazyColumn (verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 itemsIndexed(data) { index, item ->
                     AnimatedSlideIn(index * 100) {
                         AppCard(
                             modifier = Modifier
-                                .width(160.dp)
+                                .fillMaxWidth()
                                 .height(200.dp),
                             image = item.image,
                             title = item.title,
