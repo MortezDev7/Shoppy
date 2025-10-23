@@ -7,13 +7,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,8 +34,20 @@ fun ProductsScreen(
     navController: NavHostController,
     vm: ProductsViewModel = hiltViewModel()
 ) {
-    LaunchedEffect(catId) {
-        vm.loadProducts(catId)
+
+    val listState = rememberLazyListState()
+    val shouldLoadMore by remember {
+        derivedStateOf {
+            val lastVisible = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
+            val totalItems = listState.layoutInfo.totalItemsCount
+            lastVisible >= totalItems - 1
+        }
+    }
+
+    LaunchedEffect(shouldLoadMore) {
+        if (shouldLoadMore && !vm.product.isLoading){
+            vm.loadProducts(catId)
+        }
     }
 
     Column(
@@ -45,13 +59,11 @@ fun ProductsScreen(
             Text(text = title, fontWeight = FontWeight.Bold, fontSize = 26.sp)
         }
         Spacer(Modifier.height(20.dp))
-
-        DataUiStateHandler(
-            state = vm.product, modifier = Modifier
-                .fillMaxSize()
-        ) { data ->
-            LazyColumn (verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                itemsIndexed(data) { index, item ->
+            LazyColumn(
+                state = listState,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                itemsIndexed(vm.product.data?: listOf()) { index, item ->
                     AnimatedSlideIn(index * 100) {
                         AppCard(
                             modifier = Modifier
@@ -64,5 +76,4 @@ fun ProductsScreen(
                 }
             }
         }
-    }
 }

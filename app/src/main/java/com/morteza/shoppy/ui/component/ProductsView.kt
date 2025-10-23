@@ -25,14 +25,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.morteza.shoppy.viewmodel.HomeViewModel
 
 @Composable
-fun ProductsView(vm: HomeViewModel) {
+fun ProductsView(vm: HomeViewModel, navController: NavHostController) {
     Column{
         ProductFilterRow(vm)
         Spacer(Modifier.height(10.dp))
-        ProductListView(vm)
+        ProductListView(vm,navController)
     }
 }
 
@@ -79,7 +80,7 @@ fun ProductFilterRow(vm: HomeViewModel) {
 }
 
 @Composable
-fun ProductListView(vm: HomeViewModel) {
+fun ProductListView(vm: HomeViewModel, navController: NavHostController) {
     DataUiStateHandler(
         state = vm.product,
         modifier = Modifier
@@ -97,6 +98,9 @@ fun ProductListView(vm: HomeViewModel) {
                             .height(200.dp),
                         image = slider.image,
                         title = slider.title,
+                        onClick = {
+                            navController.navigate("showProduct/${slider.id}")
+                        }
                     )
                 }
             }
