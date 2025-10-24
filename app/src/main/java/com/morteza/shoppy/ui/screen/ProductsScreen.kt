@@ -71,6 +71,9 @@ fun ProductsScreen(
                                 .height(200.dp),
                             image = item.image,
                             title = item.title,
+                            onClick = {
+                                navController.navigate("showProduct/${item.id}")
+                            }
                         )
                     }
                 }
