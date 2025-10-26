@@ -3,8 +3,7 @@ package com.morteza.shoppy.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.viewModelScope
-import com.morteza.shoppy.model.products.Product
+import com.morteza.shoppy.model.api.products.Product
 import com.morteza.shoppy.repository.products.ProductRepository
 import com.morteza.shoppy.ui.state.DataUiState
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,7 +1,7 @@
 package com.morteza.shoppy.api.invoices
 
 import com.morteza.shoppy.model.ApiResponse
-import com.morteza.shoppy.model.invoices.Invoice
+import com.morteza.shoppy.model.api.invoices.Invoice
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path

@@ -1,5 +1,6 @@
 package com.morteza.shoppy.ui.screen
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +22,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,6 +32,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,6 +43,7 @@ import com.morteza.shoppy.ui.component.AnimatedSlideIn
 import com.morteza.shoppy.ui.component.AppGradient
 import com.morteza.shoppy.ui.component.AppImage
 import com.morteza.shoppy.ui.utils.formatPrice
+import com.morteza.shoppy.viewmodel.BasketViewModel
 import com.morteza.shoppy.viewmodel.SingleProductViewModel
 
 @Composable
@@ -49,8 +51,11 @@ fun SingleProductScreen(
     id: Long,
     navController: NavHostController,
     innerPadding: PaddingValues,
-    vm: SingleProductViewModel = hiltViewModel()
+    vm: SingleProductViewModel = hiltViewModel(),
+    basketVm: BasketViewModel = hiltViewModel()
 ) {
+    val context = LocalContext.current
+
     LaunchedEffect(id) {
         vm.loadProduct(id)
     }
@@ -130,7 +135,13 @@ fun SingleProductScreen(
                 AnimatedSlideIn(3000) {
                     Button(
                         onClick = {
-
+                            basketVm.addToBasket(vm.product, vm.selectedSize, vm.selectedColor)
+                            Toast.makeText(
+                                context,
+                                "Added To Basket Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            navController.popBackStack()
                         },
                         modifier = Modifier
                             .fillMaxWidth(),

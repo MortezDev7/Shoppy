@@ -2,8 +2,8 @@ package com.morteza.shoppy.repository.customers
 
 import com.morteza.shoppy.api.customers.UserApi
 import com.morteza.shoppy.model.ApiResponse
-import com.morteza.shoppy.model.customers.User
-import com.morteza.shoppy.model.customers.UserDto
+import com.morteza.shoppy.model.api.customers.User
+import com.morteza.shoppy.model.api.customers.UserDto
 import com.morteza.shoppy.repository.base.BaseRepository
 import javax.inject.Inject
 

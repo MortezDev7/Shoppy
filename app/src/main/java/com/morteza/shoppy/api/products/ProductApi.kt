@@ -2,7 +2,7 @@ package com.morteza.shoppy.api.products
 
 
 import com.morteza.shoppy.model.ApiResponse
-import com.morteza.shoppy.model.products.Product
+import com.morteza.shoppy.model.api.products.Product
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -3,9 +3,9 @@ package com.morteza.shoppy.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.morteza.shoppy.model.products.Product
-import com.morteza.shoppy.model.products.ProductCategory
-import com.morteza.shoppy.model.slider.Sliders
+import com.morteza.shoppy.model.api.products.Product
+import com.morteza.shoppy.model.api.products.ProductCategory
+import com.morteza.shoppy.model.api.slider.Sliders
 import com.morteza.shoppy.repository.products.ProductCategoryRepository
 import com.morteza.shoppy.repository.products.ProductRepository
 import com.morteza.shoppy.repository.slider.SliderRepository

@@ -1,8 +1,8 @@
 package com.morteza.shoppy.api.customers
 
 import com.morteza.shoppy.model.ApiResponse
-import com.morteza.shoppy.model.customers.User
-import com.morteza.shoppy.model.customers.UserDto
+import com.morteza.shoppy.model.api.customers.User
+import com.morteza.shoppy.model.api.customers.UserDto
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header

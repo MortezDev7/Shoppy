@@ -1,6 +1,6 @@
-package com.morteza.shoppy.model.invoices
+package com.morteza.shoppy.model.api.invoices
 
-import com.morteza.shoppy.model.customers.UserDto
+import com.morteza.shoppy.model.api.customers.UserDto
 
 data class PaymentTransaction(
     var items: List<InvoiceItem> = listOf(),

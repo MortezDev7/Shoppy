@@ -1,7 +1,7 @@
 package com.morteza.shoppy.api.slider
 
 import com.morteza.shoppy.model.ApiResponse
-import com.morteza.shoppy.model.slider.Sliders
+import com.morteza.shoppy.model.api.slider.Sliders
 import retrofit2.http.GET
 
 interface SliderApi {

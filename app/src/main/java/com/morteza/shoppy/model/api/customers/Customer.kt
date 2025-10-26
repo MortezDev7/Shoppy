@@ -1,4 +1,4 @@
-package com.morteza.shoppy.model.customers
+package com.morteza.shoppy.model.api.customers
 
 data class Customer(
     var id : Long?,

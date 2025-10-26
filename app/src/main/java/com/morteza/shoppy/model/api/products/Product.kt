@@ -1,4 +1,4 @@
-package com.morteza.shoppy.model.products
+package com.morteza.shoppy.model.api.products
 
 data class Product(
     var id : Long?,

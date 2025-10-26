@@ -2,7 +2,7 @@ package com.morteza.shoppy.repository.products
 
 import com.morteza.shoppy.api.products.ProductApi
 import com.morteza.shoppy.model.ApiResponse
-import com.morteza.shoppy.model.products.Product
+import com.morteza.shoppy.model.api.products.Product
 import com.morteza.shoppy.repository.base.BaseRepository
 import javax.inject.Inject
 

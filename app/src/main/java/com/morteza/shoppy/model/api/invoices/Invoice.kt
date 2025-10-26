@@ -1,6 +1,6 @@
-package com.morteza.shoppy.model.invoices
+package com.morteza.shoppy.model.api.invoices
 
-import com.morteza.shoppy.model.customers.User
+import com.morteza.shoppy.model.api.customers.User
 
 data class Invoice(
     val id : Long?,

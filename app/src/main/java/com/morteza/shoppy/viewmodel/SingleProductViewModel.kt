@@ -3,9 +3,9 @@ package com.morteza.shoppy.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.morteza.shoppy.model.products.Product
-import com.morteza.shoppy.model.products.ProductColor
-import com.morteza.shoppy.model.products.ProductSize
+import com.morteza.shoppy.model.api.products.Product
+import com.morteza.shoppy.model.api.products.ProductColor
+import com.morteza.shoppy.model.api.products.ProductSize
 import com.morteza.shoppy.repository.products.ProductRepository
 import com.morteza.shoppy.ui.state.DataUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
