@@ -23,6 +23,10 @@ class BasketEntityRepository @Inject constructor(
         dao.add(item)
     }
 
+    fun delete(productId: Long, sizeId: Long, colorId: Long){
+        dao.deleteByIds(productId, sizeId, colorId)
+    }
+
 
 
 }

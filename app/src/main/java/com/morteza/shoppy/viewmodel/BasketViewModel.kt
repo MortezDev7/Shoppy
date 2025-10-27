@@ -16,34 +16,46 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BasketViewModel @Inject constructor(
-    private val repository : BasketEntityRepository
-): ViewModel() {
+    private val repository: BasketEntityRepository
+) : ViewModel() {
 
-    val basket =  repository.getAllBasketList()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000),emptyList())
+    val basket = repository.getAllBasketList()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    fun addToBasket(product : Product?,size: ProductSize?,color: ProductColor?){
+    fun addToBasket(product: Product?, size: ProductSize?, color: ProductColor?) {
         viewModelScope.launch(Dispatchers.IO) {
             val oldItem = repository.findBasketItem(
-                product?.id?:0,
-                size?.id?:0,
-                color?.id?:0
+                product?.id ?: 0,
+                size?.id ?: 0,
+                color?.id ?: 0
             )
-            if (oldItem != null){
+            if (oldItem != null) {
                 repository.incrementQuantity(oldItem)
-            }else{
-                repository.insert(BasketEntity(
-                    productId = product?.id!!,
-                    sizeId = size?.id!!,
-                    colorId = color?.id!!,
-                    quantity = 1,
-                    image = product.image!!,
-                    price = product.price!!,
-                    title = product.title,
-                    colorHex = color.hexValue,
-                    size = size.title
-                ))
+            } else {
+                repository.insert(
+                    BasketEntity(
+                        productId = product?.id!!,
+                        sizeId = size?.id!!,
+                        colorId = color?.id!!,
+                        quantity = 1,
+                        image = product.image!!,
+                        price = product.price!!,
+                        title = product.title,
+                        colorHex = color.hexValue,
+                        size = size.title
+                    )
+                )
             }
+        }
+    }
+
+    fun deleteItemFromBasket(item: BasketEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.delete(
+                productId = item.productId,
+                sizeId = item.sizeId,
+                colorId = item.colorId
+            )
         }
     }
 }

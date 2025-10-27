@@ -1,6 +1,7 @@
 package com.morteza.shoppy.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.morteza.shoppy.model.db.BasketEntity
@@ -17,4 +18,6 @@ interface BasketEntityDao {
     fun add(basketEntity: BasketEntity)
     @Query("UPDATE BasketEntity SET quantity = quantity + 1 WHERE id = :id")
     fun incrementQuantity(id: Int)
+    @Query("DELETE FROM BasketEntity WHERE productId = :productId AND sizeId = :sizeId AND colorId = :colorId")
+    fun deleteByIds(productId: Long, sizeId: Long, colorId: Long)
 }

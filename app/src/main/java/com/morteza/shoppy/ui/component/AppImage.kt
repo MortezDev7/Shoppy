@@ -1,7 +1,6 @@
 package com.morteza.shoppy.ui.component
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,8 +14,8 @@ import coil3.compose.AsyncImage
 fun AppImage(
     model: String,
     description: String,
-    contentScale: ContentScale = ContentScale.Crop
-) {
+    contentScale: ContentScale = ContentScale.Crop,
+    ) {
     var loading by remember { mutableStateOf(false) }
 
     AsyncImage(
