@@ -39,9 +39,9 @@ import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.morteza.shoppy.ui.component.AnimatedSlideIn
-import com.morteza.shoppy.ui.component.AppGradient
-import com.morteza.shoppy.ui.component.AppImage
+import com.morteza.shoppy.ui.component.graphic.AnimatedSlideIn
+import com.morteza.shoppy.ui.component.graphic.AppGradient
+import com.morteza.shoppy.ui.component.app.AppImage
 import com.morteza.shoppy.ui.utils.formatPrice
 import com.morteza.shoppy.viewmodel.BasketViewModel
 import com.morteza.shoppy.viewmodel.SingleProductViewModel

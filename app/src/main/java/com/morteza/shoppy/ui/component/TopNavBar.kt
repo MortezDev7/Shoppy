@@ -21,15 +21,19 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.morteza.shoppy.R
+import com.morteza.shoppy.ui.component.graphic.AnimatedSlideIn
 import com.morteza.shoppy.viewmodel.BasketViewModel
+import com.morteza.shoppy.viewmodel.UserViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopNavBar(
     vm: BasketViewModel = hiltViewModel(),
-    navController: NavHostController
+    navController: NavHostController,
+    userVm : UserViewModel = hiltViewModel()
 ) {
     val basket by vm.basket.collectAsState()
+    val currentUser by userVm.currentUser.collectAsState()
 
     TopAppBar(
         title = {
@@ -45,7 +49,9 @@ fun TopNavBar(
             AnimatedSlideIn(600) {
                 IconButton(
                     onClick = {
-                        navController.navigate("basket")
+                        navController.navigate("basket") {
+                            launchSingleTop = true
+                        }
                     },
                     modifier = Modifier.width(50.dp)
                 ) {
@@ -65,9 +71,14 @@ fun TopNavBar(
             }
 
             AnimatedSlideIn(900) {
-                IconButton (
+                IconButton(
                     onClick = {
-
+                        if (currentUser == null)
+                        navController.navigate("login")
+                        else
+                            navController.navigate("userProfile"){
+                                launchSingleTop = true
+                            }
                     },
                     modifier = Modifier.width(50.dp)
                 ) {

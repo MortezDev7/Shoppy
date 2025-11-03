@@ -22,9 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.morteza.shoppy.ui.component.AnimatedSlideIn
-import com.morteza.shoppy.ui.component.AppCard
-import com.morteza.shoppy.ui.component.DataUiStateHandler
+import com.morteza.shoppy.ui.component.graphic.AnimatedSlideIn
+import com.morteza.shoppy.ui.component.graphic.AppCard
 import com.morteza.shoppy.viewmodel.ProductsViewModel
 
 @Composable

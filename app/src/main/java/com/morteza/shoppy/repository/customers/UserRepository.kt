@@ -2,6 +2,7 @@ package com.morteza.shoppy.repository.customers
 
 import com.morteza.shoppy.api.customers.UserApi
 import com.morteza.shoppy.model.ApiResponse
+import com.morteza.shoppy.model.api.customers.LoginRequestDto
 import com.morteza.shoppy.model.api.customers.User
 import com.morteza.shoppy.model.api.customers.UserDto
 import com.morteza.shoppy.repository.base.BaseRepository
@@ -22,7 +23,7 @@ class UserRepository @Inject constructor(
             api.changePassword(user,prepareToken(token))
         }
 
-    suspend fun login (user : UserDto): ApiResponse<UserDto> =
+    suspend fun login (user : LoginRequestDto): ApiResponse<UserDto> =
         safeApiCall {
             api.login(user)
         }

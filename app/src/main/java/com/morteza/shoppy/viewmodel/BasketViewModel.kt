@@ -58,4 +58,17 @@ class BasketViewModel @Inject constructor(
             )
         }
     }
+
+    fun increaseQuantity(item: BasketEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.incrementQuantity(item)
+        }
+
+    }
+
+    fun decreaseQuantity(item: BasketEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.decrementQuantity(item)
+        }
+    }
 }

@@ -35,6 +35,9 @@ fun OnlineShopApp() {
             NavHost(navController, startDestination = "home") {
                 composable("home") { HomeScreen(navController) }
                 composable("basket") { BasketScreen(navController) }
+                composable("userPayment") { UserPaymentScreen(navController) }
+                composable("login") { LoginScreen(navController) }
+                composable("userProfile") { UserProfileScreen(navController) }
                 composable(
                     "products/{catId}/{title}",
                     arguments = listOf(

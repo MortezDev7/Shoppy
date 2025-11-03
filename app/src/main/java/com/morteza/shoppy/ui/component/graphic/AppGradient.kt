@@ -1,4 +1,4 @@
-package com.morteza.shoppy.ui.component
+package com.morteza.shoppy.ui.component.graphic
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

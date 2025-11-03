@@ -20,4 +20,8 @@ interface BasketEntityDao {
     fun incrementQuantity(id: Int)
     @Query("DELETE FROM BasketEntity WHERE productId = :productId AND sizeId = :sizeId AND colorId = :colorId")
     fun deleteByIds(productId: Long, sizeId: Long, colorId: Long)
+    @Query("UPDATE BasketEntity SET quantity = quantity - 1 WHERE id = :id")
+    fun decrementQuantity(id: Int)
+    @Query("DELETE FROM BasketEntity")
+    fun deleteAll()
 }

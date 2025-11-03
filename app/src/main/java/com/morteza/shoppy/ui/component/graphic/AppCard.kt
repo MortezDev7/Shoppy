@@ -1,4 +1,4 @@
-package com.morteza.shoppy.ui.component
+package com.morteza.shoppy.ui.component.graphic
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.morteza.shoppy.ui.component.app.AppImage
 
 @Composable
 fun AppCard(

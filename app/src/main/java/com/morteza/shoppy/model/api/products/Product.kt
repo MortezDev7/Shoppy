@@ -1,14 +1,14 @@
 package com.morteza.shoppy.model.api.products
 
 data class Product(
-    var id : Long?,
-    var addDate : String?,
+    var id : Long? = null,
+    var addDate : String? = null ,
     var category: ProductCategory? = null,
-    var colors: List <ProductColor?> = listOf(),
-    var description : String?,
-    var image : String?,
-    var price : Long?,
+    var colors: List <ProductColor?> = listOf() ,
+    var description : String? = null,
+    var image : String? = null,
+    var price : Long? = null,
     var sizes : List<ProductSize?> = listOf(),
-    var title : String?,
-    var visitCount : Int?
+    var title : String? = null,
+    var visitCount : Int? = null
     )

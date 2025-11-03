@@ -1,16 +1,16 @@
 package com.morteza.shoppy.model.api.customers
 
 data class UserDto(
-    var id : Long?,
-    var password : String?,
-    var username : String?,
-    var address : String?,
-    var firstName : String?,
-    var lastName : String?,
-    var phone : String?,
-    var postalCode : String ?,
-    var customerId : Long?,
-    var oldPassword : String?,
-    var repeatPassword : String?,
-    var token : String?,
+    var id : Long? = null,
+    var password : String?  = null,
+    var username : String?  = null,
+    var address : String?  = null,
+    var firstName : String?  = null,
+    var lastName : String?  = null,
+    var phone : String?  = null,
+    var postalCode : String ?  = null,
+    var customerId : Long?  = null,
+    var oldPassword : String? = "",
+    var repeatPassword : String? = "",
+    var token : String? = "",
 )

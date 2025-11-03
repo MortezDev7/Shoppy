@@ -1,4 +1,4 @@
-package com.morteza.shoppy.ui.component
+package com.morteza.shoppy.ui.component.graphic
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.FastOutSlowInEasing

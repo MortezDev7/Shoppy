@@ -11,7 +11,8 @@ class BasketEntityRepository @Inject constructor(
     fun getAllBasketList(): Flow<List<BasketEntity>> {
         return dao.getAll()
     }
-     fun findBasketItem(productId: Long, sizeId: Long, colorId: Long): BasketEntity? {
+
+    fun findBasketItem(productId: Long, sizeId: Long, colorId: Long): BasketEntity? {
         return dao.findItem(productId, sizeId, colorId)
     }
 
@@ -23,10 +24,19 @@ class BasketEntityRepository @Inject constructor(
         dao.add(item)
     }
 
-    fun delete(productId: Long, sizeId: Long, colorId: Long){
+    fun delete(productId: Long, sizeId: Long, colorId: Long) {
         dao.deleteByIds(productId, sizeId, colorId)
     }
 
+    fun decrementQuantity(item: BasketEntity) {
+        if (item.quantity == 1) {
+            return
+        } else {
+            dao.decrementQuantity(item.id)
+        }
+    }
 
-
+    fun deleteAll(){
+        dao.deleteAll()
+    }
 }

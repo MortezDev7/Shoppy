@@ -1,4 +1,4 @@
-package com.morteza.shoppy.ui.component
+package com.morteza.shoppy.ui.component.products
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +26,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.morteza.shoppy.ui.component.DataUiStateHandler
+import com.morteza.shoppy.ui.component.graphic.AnimatedSlideIn
+import com.morteza.shoppy.ui.component.graphic.AppCard
 import com.morteza.shoppy.viewmodel.HomeViewModel
 
 @Composable

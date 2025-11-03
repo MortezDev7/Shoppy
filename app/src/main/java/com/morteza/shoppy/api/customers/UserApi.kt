@@ -1,6 +1,7 @@
 package com.morteza.shoppy.api.customers
 
 import com.morteza.shoppy.model.ApiResponse
+import com.morteza.shoppy.model.api.customers.LoginRequestDto
 import com.morteza.shoppy.model.api.customers.User
 import com.morteza.shoppy.model.api.customers.UserDto
 import retrofit2.http.Body
@@ -24,7 +25,7 @@ interface UserApi {
 
     @POST("user/login")
     suspend fun login(
-        @Body user : UserDto,
+        @Body user : LoginRequestDto,
     ) : ApiResponse<UserDto>
 
     @POST("user/register")

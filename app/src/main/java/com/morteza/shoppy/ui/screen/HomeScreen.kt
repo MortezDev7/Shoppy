@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.morteza.shoppy.ui.component.ProductCategoriesRow
-import com.morteza.shoppy.ui.component.ProductsView
-import com.morteza.shoppy.ui.component.SlidersRow
+import com.morteza.shoppy.ui.component.products.ProductCategoriesRow
+import com.morteza.shoppy.ui.component.products.ProductsView
+import com.morteza.shoppy.ui.component.products.SlidersRow
 import com.morteza.shoppy.viewmodel.HomeViewModel
 
 @Composable
