@@ -18,7 +18,7 @@ class InvoiceRepository @Inject constructor(
 
     suspend fun getInvoiceByUserId(userId : Long,pageIndex : Int,pageSize : Int, token: String): ApiResponse<Invoice> =
         safeApiCall {
-            api.getInvoiceByUserId(userId,pageSize,pageSize,prepareToken(token))
+            api.getInvoiceByUserId(userId,pageIndex,pageSize,prepareToken(token))
         }
 
 }

@@ -38,6 +38,7 @@ fun OnlineShopApp() {
                 composable("userPayment") { UserPaymentScreen(navController) }
                 composable("login") { LoginScreen(navController) }
                 composable("userProfile") { UserProfileScreen(navController) }
+                composable("invoices") { InvoicesScreen(navController) }
                 composable(
                     "products/{catId}/{title}",
                     arguments = listOf(
@@ -55,10 +56,16 @@ fun OnlineShopApp() {
                         navArgument("id") { type = NavType.LongType })
                 ) {
                     val id = it.arguments?.getLong("id") ?: 0
-                    SingleProductScreen(id, navController,innerPadding)
+                    SingleProductScreen(id, navController, innerPadding)
                 }
-
-
+                composable(
+                    "invoice/{id}",
+                    arguments = listOf(
+                        navArgument("id") { type = NavType.LongType })
+                ) {
+                    val id = it.arguments?.getLong("id") ?: 0
+                    SingleInvoiceScreen(id, navController)
+                }
             }
         }
     }

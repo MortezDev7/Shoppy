@@ -16,4 +16,5 @@ interface UserEntityDao {
 
     @Query("SELECT * FROM UserEntity LIMIT 1")
     fun get() : Flow<UserEntity?>
+
 }

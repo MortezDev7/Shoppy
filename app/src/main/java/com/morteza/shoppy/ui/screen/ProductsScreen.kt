@@ -35,6 +35,7 @@ fun ProductsScreen(
 ) {
 
     val listState = rememberLazyListState()
+
     val shouldLoadMore by remember {
         derivedStateOf {
             val lastVisible = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0

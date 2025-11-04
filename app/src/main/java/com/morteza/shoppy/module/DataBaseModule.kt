@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.morteza.shoppy.config.AppDataBase
 import com.morteza.shoppy.dao.BasketEntityDao
+import com.morteza.shoppy.dao.InvoiceEntityDao
 import com.morteza.shoppy.dao.UserEntityDao
 import dagger.Module
 import dagger.Provides
@@ -35,5 +36,11 @@ object DataBaseModule {
     @Singleton
     fun provideUserEntityDao(dataBase: AppDataBase): UserEntityDao{
         return dataBase.userDao()
+    }
+
+    @Provides
+    @Singleton
+    fun invoiceEntityDao(dataBase: AppDataBase): InvoiceEntityDao{
+        return dataBase.invoiceDao()
     }
 }

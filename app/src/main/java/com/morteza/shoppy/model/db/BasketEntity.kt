@@ -15,5 +15,4 @@ data class BasketEntity(
     val image : String?,
     val colorHex : String?,
     val size : String?
-
 )
